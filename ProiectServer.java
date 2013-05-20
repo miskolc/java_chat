@@ -115,6 +115,22 @@ class Connexion extends Thread{
         } catch (IOException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        try {
+            oos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            ois.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            cs.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
 
@@ -181,8 +197,6 @@ public class ProiectServer {
 
 
         }
-        
-
 
     }
 

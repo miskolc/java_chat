@@ -54,6 +54,11 @@ class Receiver extends Thread {
                 System.out.println(response);
             }
         }
+        try {
+            ois.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Sender.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
 
@@ -135,6 +140,16 @@ class Sender extends Thread {
 
 
             }
+        try {
+            oos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Sender.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            ProiectClient.cs.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Sender.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
 
@@ -145,6 +160,7 @@ public class ProiectClient {
      */
     static Scanner sc;
     static boolean stopApplication = false;
+    static Socket cs = null;
 
     private static void select_name(Socket cs, ObjectInputStream ois,  ObjectOutputStream oos)
             throws IOException, ClassNotFoundException{
@@ -171,7 +187,7 @@ public class ProiectClient {
        System.out.println("Address and port :\t");
        adresa = sc.next(); port = sc.nextInt();
 
-       Socket cs = null;
+       
         try {
             cs = new Socket(adresa, port);
             
